@@ -1,0 +1,107 @@
+#footer {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  max-width: @on-phone;
+  margin: 0px auto;
+  font-size: 14px;
+  overflow: hidden;
+  text-align: center;
+  opacity: 0;
+  transform: translate3d(0px, -20px, 0px);
+  transition: all 0.4s ease;
+  z-index: 3;
+
+	&.loaded {
+		transform: translate3d(0px, 0px, 0px);
+		opacity: 1;
+	}
+	.codename {
+		color: @material-orange;
+	}
+	.social-wrapper {
+		padding-top: 20px;
+	}
+  a {
+    color: @grey-color;
+
+    &:hover {
+      background: fade(@accent-color, 10%);
+      color: darken(@accent-color, 3%);
+    }
+    &.social {
+	    position: relative;
+	    display: inline-block;
+	    text-align: center;
+	    font-size: 16px;
+	    margin: 0px 5px;
+	    
+	  	&:hover {
+		  	background: transparent;
+		  	color: @accent-color;
+	  	}
+	  	&.github:hover {
+		  	color: @github-color;
+	  	}
+	  	&.google:hover {
+		  	color: @google-color;
+	  	}
+	  	&.twitter:hover {
+		  	color: @twitter-color;
+	  	}
+	  	&.weibo:hover {
+		  	color: @weibo-color;
+	  	}
+    }
+  }
+}
+
+.search {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0px auto 20px auto;
+  z-index: 2;
+
+  #searchform {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    .search-bar-trigger {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0px;
+      width: 36px;
+      height: 36px;
+      background: transparent;
+      color: white;
+      border: 0;
+      text-align: center;
+      
+      span {
+	      line-height: 36px;
+      }
+    }
+  }
+  .search_input {
+    width: 100%;
+    padding: 0px 10px;
+    line-height: 36px;
+    height: 36px;
+    font-size: 14px;
+    font-family: @base-font-family;
+    border: 2px solid @black;
+    border-radius: 0 !important;
+    background: @black;
+    color: white;
+    box-sizing: border-box;
+    transition: all 0.24s ease;
+
+    &:focus {
+      background: black;
+      border-color: black;
+    }
+  }
+}

@@ -1,0 +1,224 @@
+.content {
+	color: lighten(@black, 2%);
+  font-size: 14px;
+  line-height: 1.75em;
+  padding: 0px 30px;
+  
+  @media (max-width: @on-phone) {
+    padding: 0px 20px;
+  }
+  #pixiv-vol,
+  #pixiv-artist-count {
+    color: @brand-color;
+    font-weight: 500;
+  }
+	img {
+		position: relative;
+		display: block;
+		width: 114%;
+		margin: 0 -7%;
+		box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
+		padding: 5px;
+		background: white;
+		transition: all 0.24s ease;
+		
+		@media (max-width: @on-phone)  {
+			width: 100%;
+			margin: 0;
+			box-shadow: none;
+		}
+	}
+	p.small-img,
+	div.small-img {
+		img {
+			width: auto;
+			max-width: 100%;
+			margin: 0;
+			box-shadow: none;
+		}
+	}
+	p {
+		margin: 20px 0px;
+	}
+	ul,
+	ol {
+		list-style: circle;
+		margin: 20px 0px;
+		padding-left: 30px;
+	}
+	a {
+    color: darken(@accent-color, 2%);
+
+    &:hover {
+      color: darken(@accent-color, 3%);
+      background: fade(@accent-color, 10%);
+    }
+    &:active {
+      background: fade(@accent-color, 20%);
+      color: @white;
+    }
+  }
+  h1, h2, h3, h4, h5, h6 {
+	  position: relative;
+    font-family: @base-font-family;
+    font-weight: bold;
+    margin: 40px auto 30px auto;
+    left: 20px;
+ 
+    &::before {
+	    position: absolute;
+	    left: -20px;
+	    top: 0px;
+	    content: "#";
+	    color: @material-green;
+	    font-weight: normal;
+    }
+  }
+  .highlight {
+    margin: 20px 0px;
+    table {
+      width: 100%;
+    }
+  }
+  blockquote {
+    position: relative;
+    width: 100%;
+    margin: 20px 0px;
+    padding: 0px 20px;
+    border-left: 4px solid @material-green;
+  }
+	pre {
+		display: block;
+		-moz-box-sizing: border-box;
+    box-sizing: border-box;
+		font-family: @code-font-family;
+	  width: 100%;
+    font-size: 13px;
+    margin: 20px 0px;
+    padding: 10px 15px;
+    background: lighten(@background-color,5%);
+    white-space: pre;
+    overflow: auto;
+    
+	  code {
+			color: @black;
+			margin: 0;
+			font-size: 1em;
+			background: transparent;
+			border: 0;
+			white-space: inherit;
+		}
+		figure {
+			margin: 0px;
+		}
+  }
+  code {
+	  font-family: @code-font-family;
+	  color: darken(@brand-color, 2%);
+    padding: 3px 5px;
+    margin: 0px 2px;
+    border-radius: 2px;
+    white-space: nowrap;
+    font-size: 1em;
+    background: lighten(@background-color,5%);
+  }
+  .tags {
+	  margin-top: 50px;
+	  
+		a {
+			position: relative;
+			padding: 4px 10px 4px 20px;
+			margin-right: 5px;
+			font-size: 14px;
+			background: @background-color;
+			border-radius: 2px;
+			vertical-align: middle;
+			line-height: 1.75em;
+			color: @black;
+			
+			&:hover {
+				background: @black;
+				color: white;
+			}
+			&::before {
+				position: absolute;
+				top: 0;
+				left: 7px;
+				content: "#";
+			}
+		}
+	}
+  @media (max-width: @on-phone)  {
+
+    h1, h2, h3 {
+      margin: 30px 0px;
+    }
+    h4, h5, h6 {
+      margin: 20px 0px;
+    }
+    h1 {
+      font-size: 1.5em;
+    }
+    h2 {
+      font-size: 1.4em;
+    }
+    h3 {
+      font-size: 1.3em;
+    }
+    h4{
+      font-size: 1.2em;
+    }
+    h5 {
+      font-size: 1.1em;
+    }
+    h6 {
+      font-size: 1em;
+    }
+    figure {
+      font-size: 13px;
+      line-height: 1.6em;
+    }
+  }
+}
+
+/* Tomorrow Theme */
+.tomorrow-comment, pre .comment, pre .title {
+  color: #8e908c;
+}
+
+.tomorrow-red, pre .variable, pre .attribute, pre .tag, pre .regexp, pre .ruby .constant, pre .xml .tag .title, pre .xml .pi, pre .xml .doctype, pre .html .doctype, pre .css .id, pre .css .class, pre .css .pseudo {
+  color: #c82829;
+}
+
+.tomorrow-orange, pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+  color: #f5871f;
+}
+
+.tomorrow-yellow, pre .class, pre .ruby .class .title, pre .css .rules .attribute {
+  color: #eab700;
+}
+
+.tomorrow-green, pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+  color: #718c00;
+}
+
+.tomorrow-aqua, pre .css .hexcolor {
+  color: #3e999f;
+}
+
+.tomorrow-blue, pre .function, pre .python .decorator, pre .python .title, pre .ruby .function .title, pre .ruby .title .keyword, pre .perl .sub, pre .javascript .title, pre .coffeescript .title {
+  color: #4271ae;
+}
+
+.tomorrow-purple, pre .keyword, pre .javascript .function {
+  color: #8959a8;
+}
+
+pre code {
+  display: block;
+  background: white;
+  color: #4d4d4c;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  padding: 10px;
+}

@@ -1,0 +1,183 @@
+#main {
+	position: relative;
+	width: 100%;
+	max-width: @on-phone;
+	margin: 0px auto;
+	padding: 0px 30px 20px 30px;
+	opacity: 0;
+	transform: translate3d(0px,-20px,0px);
+	transition: all 0.24s ease;
+	
+	&.loaded {
+		transform: translate3d(0px,0px,0px);
+		opacity: 1;
+	}
+	@media (max-width: @on-phone) {
+		padding: 0px 20px 20px 20px;
+	}
+	.post-list {
+		position: relative;
+		width: 760px;
+		margin: 0px auto;
+		
+		@media (max-width: @on-phone) {
+			width: 100%;
+		}
+	}
+	.page-header {
+		text-align: center;
+		margin: 0px auto 20px auto;
+		
+		h1 {
+			font-size: 0.875em;
+			font-weight: normal;
+			color: lighten(@grey-color, 20%);
+		}
+	}
+	
+	#comments {
+		position: relative;
+		padding: 30px;
+		background: white;
+		box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
+
+		@media (max-width: @on-phone) {
+			padding: 20px;
+		}
+		&.page {
+			margin-top: 20px;
+		}
+	}
+	.post {
+		position: relative;
+		margin-bottom: 50px;
+		position: relative;
+		padding: 40px 0px;
+		background: white;
+		box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
+
+		&:last-child,
+		&.single {
+			margin-bottom: 0px;
+		}
+		&.author-profile {
+			position: relative;
+			padding: 30px 20px;
+			height: auto;
+			text-align: center;
+			margin-bottom: 30px;
+			transition: all 0.24s ease;
+			
+			@media (max-width: @on-phone) {
+				padding: 20px;
+			}
+			.author-title,
+			.author-bio {
+				position: relative;
+				font-size: 1em;
+				z-index: 1;
+				
+				span,
+				a {
+					display: inline-block;
+					background: rgba(0,0,0,0.5);
+					color: white;
+					padding: 5px 15px 7px 15px;
+					border-radius: 5px;
+					font-weight: 500;
+					letter-spacing: 1px;
+				}
+				a:hover {
+					color: @accent-color;
+					background: rgba(0,0,0,0.75);
+				}
+			}
+			.author-title {
+				
+				a {
+					font-size: 1.25em;
+					
+					@media (max-width: @on-phone) {
+						font-size: 1.25em;
+						padding: 7px 20px;
+					}
+				}
+			} 
+			.author-avatar {
+				position: relative;
+				margin: 0px auto;
+				width: 80px;
+				height: 80px;
+				border-radius: 50%;
+				overflow: hidden;
+				margin-bottom: 20px;
+				z-index: 1;
+				
+				img {
+					display: block;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.author-cover {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: @black;
+				z-index: 0;
+				
+				.img {
+					display: block;
+					width: 100%;
+					height: 100%;
+					background-size: cover;
+				}
+			}
+		}
+		> .title {
+			display: block;
+			text-align: center;
+			font-size: 1.25em;
+			padding: 0px 20px;
+			
+			@media (max-width: @on-phone) {
+				font-size: 1em;
+			}
+			a {
+				display: inline;
+				line-height: 1.25;
+				font-weight: normal;
+				color: lighten(@black, 2%);
+				
+				&:hover {
+		      color: lighten(@material-green, 3%);
+		    }
+			}
+		}
+		> time {
+			display: block;
+			text-align: center;
+			color: lighten(@grey-color, 20%);
+			font-size: 0.75em;
+			margin-bottom: 30px;
+		}
+		.image {
+			position: relative;
+			width: 100%;
+			margin: 20px 0px;
+			
+			a {
+				display: block;
+			}
+			img {
+				position: relative;
+				display: block;
+				width: 104%;
+				margin: 0 -2%;
+				box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
+			}
+		}
+	}
+}
