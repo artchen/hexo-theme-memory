@@ -2,9 +2,9 @@
 
 Typescript is a minimal theme for [Hexo](http://hexo.io).
 
-This theme on other platform:
+This theme is also available on:
 
-Ghost version: [ghost-theme-typescript](https://github.com/artchen/ghost-theme-typescript)
+* Ghost version: [ghost-theme-typescript](https://github.com/artchen/ghost-theme-typescript)
 
 ## Dependencies
 
@@ -29,13 +29,10 @@ The global `_config.yml` for Hexo may also be modified. In particular:
 
 In addition to these settings, users may also want to edit/replace the following files:
 
-* The site logo: `source/images/logo.png`, `source/images/logo.psd`
-
-The search feature uses [swiftype](https://swiftype.com/). Please follow their instruction to setup your own searches.
-
-The icon fonts are from [icomoon](https://icomoon.io/).
-
-I used Adobe Typekit for my site. If you are not using Typekit, please delete corresponding code in `layout/_partial/head.ejs`.
+* Replace the site logo: `source/images/logo.png`, `source/images/logo.psd`
+* The search feature uses [swiftype](https://swiftype.com/). Please follow their instruction to setup yours.
+* The icon fonts are from [icomoon](https://icomoon.io/).
+* The default English font is Futura PT via Adobe Typekit. If you are using Typekit like me, please change the embedded javascript code in `layout/_partial/head.ejs`, else you can delete the corresponding code.
 
 ## Demo
 
