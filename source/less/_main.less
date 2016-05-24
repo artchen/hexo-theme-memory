@@ -56,6 +56,18 @@
 		background: white;
 		box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
 
+		&.no-title {
+			padding: 20px 0px;
+
+			> time {
+				text-align: left;
+				padding-left: 30px;
+				margin: 0;
+				@media (max-width: @on-phone) {
+					padding-left: 20px;
+				}
+			}
+		}
 		&:last-child,
 		&.single {
 			margin-bottom: 0px;
@@ -178,6 +190,9 @@
 				margin: 0 -2%;
 				box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
 			}
+		}
+		.readmore {
+			margin-top: 20px;
 		}
 	}
 }

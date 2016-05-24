@@ -44,6 +44,7 @@ Public resources used in this theme:
 
 * [icomoon](https://icomoon.io/)
 * [normalize.css](https://necolas.github.io/normalize.css/)
+* [fitvids.js](https://github.com/davatron5000/FitVids.js)
 
 Copyright © Art Chen
 

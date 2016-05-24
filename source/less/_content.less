@@ -7,11 +7,6 @@
   @media (max-width: @on-phone) {
     padding: 0px 20px;
   }
-  #pixiv-vol,
-  #pixiv-artist-count {
-    color: @brand-color;
-    font-weight: 500;
-  }
 	img {
 		position: relative;
 		display: block;
@@ -28,6 +23,10 @@
 			box-shadow: none;
 		}
 	}
+  hr {
+    border: 0;
+    border-bottom: 1px solid #ddd;
+  }
 	p.small-img,
 	div.small-img {
 		img {
@@ -74,10 +73,12 @@
 	    font-weight: normal;
     }
   }
-  .highlight {
-    margin: 20px 0px;
-    table {
-      width: 100%;
+  figure {
+    figcaption {
+      span {
+        display: inline-block;
+        margin-right: 5px;
+      }
     }
   }
   blockquote {
@@ -86,6 +87,12 @@
     margin: 20px 0px;
     padding: 0px 20px;
     border-left: 4px solid @material-green;
+
+    footer {
+      strong {
+        margin-right: 7px;
+      }
+    }
   }
 	pre {
 		display: block;
@@ -121,6 +128,29 @@
     white-space: nowrap;
     font-size: 1em;
     background: lighten(@background-color,5%);
+  }
+  .highlight {
+    margin: 20px 0px;
+    background: lighten(@background-color,5%);
+
+    figcaption {
+      background: white;
+      padding-bottom: 15px;
+    }
+    pre {
+      margin: 0;
+    }
+    .gutter {
+      pre {
+        padding: 10px;
+        text-align: right;
+      }
+    }
+    .line {
+      &.marked {
+        background: #F6F6F8;
+      }
+    }
   }
   .tags {
 	  margin-top: 50px;
@@ -212,13 +242,4 @@
 
 .tomorrow-purple, pre .keyword, pre .javascript .function {
   color: #8959a8;
-}
-
-pre code {
-  display: block;
-  background: white;
-  color: #4d4d4c;
-  line-height: 1.5;
-  border: 1px solid #ccc;
-  padding: 10px;
 }

@@ -1,23 +1,31 @@
-<article class="post">
+<article class="post <%= (post.title) ? "" : "no-title" %>">
+
+  <% if (post.title) { %>
   <h2 class="title">
     <a href="<%- url_for(post.path) %>">
       <%= post.title %>
     </a>
   </h2>
+  <% } %>
   <time>
     <%= date(post.date, 'MMM D, YYYY') %>
   </time>
   <section class="content">
 	  <%- post.content %>
-	  
+
+	  <div class="readmore">
+      <a href="<%- url_for(post.path) %>">Read More</a>
+    </div>
+
+    <% if (post.tags && post.tags.length) { %>
 	  <div class="tags">
-		  <% if (post.tags && post.tags.length){ %>
-        <%- list_tags(post.tags, {
-          show_count: false,
-          style: 'none',
-          separator: ''
-        }) %>
-      <% } %>
+      <%- list_tags(post.tags, {
+        show_count: false,
+        style: 'none',
+        separator: ''
+      }) %>
 	  </div>
+    <% } %>
+
   </section>
 </article>

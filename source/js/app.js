@@ -29,6 +29,7 @@
 			e.stopPropagation();
 		});
 		$('.window-nav, .go-comment').on('click', scrolltoElement);
+    $(".content .video-container").fitVids();
 
 		setTimeout(function() {
 	    $('#loading-bar-wrapper').fadeOut(500);
