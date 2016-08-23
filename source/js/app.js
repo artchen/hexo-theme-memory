@@ -1,6 +1,13 @@
 (function($) {
 	
 	"use strict";
+	
+	// options
+	var GOOGLE_CUSTOM_SEARCH_ENABLE = true;
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "AIzaSyBFj4A2FRz36n1bLiOQbcGhmUdpM-buAZ0";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "017821029378163458527:c46kp7iwut4";
+	
+	var customSearch = {};
   
   var scrolltoElement = function(e) {
     e.preventDefault();
@@ -34,6 +41,13 @@
 		setTimeout(function() {
 	    $('#loading-bar-wrapper').fadeOut(500);
 	  }, 300);
+	  
+	  if (GOOGLE_CUSTOM_SEARCH_ENABLE) {
+  	  customSearch = new GoogleCustomSearch({
+    	  apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
+    	  engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID
+  	  });
+	  }
 
 	});
 		
