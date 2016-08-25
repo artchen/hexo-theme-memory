@@ -16,7 +16,11 @@ navigation:
   url: http://otakism.org/works
 
 # Search
-search_enable: true
+search: 
+  enable: true
+  service: hexo
+  api_key: 
+  engine_id: 
 
 # Miscellaneous
 google_analytics:
@@ -35,7 +39,7 @@ social:
   url: https://github.com/artchen
 - slug: twitter
   url: https://twitter.com/otakism
-- slug: feed
+- slug: rss
 	url: /atom.xml
 - slug: google
   url: https://plus.google.com/+ArtChenOtakism/posts
@@ -43,7 +47,7 @@ social:
   url: # https://www.facebook.com/zanchoret
 - slug: linkedin
   url: # https://www.linkedin.com/in/buzun
-- slug: weibo
+- slug: sina-weibo
   url: http://weibo.com/otakism/
 - slug: tumblr
   url: # http://artchen.tumblr.com

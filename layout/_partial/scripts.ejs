@@ -18,6 +18,11 @@
 <script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
 
 <%- js('js/jquery.fitvids.js') %>
-<%- js('js/google-custom-search.js') %>
-<%- js('js/app.js') %>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.api_key %>";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.engine_id %>";
+  var SEARCH_SERVICE = "<%- theme.search.service %>";
+</script>
+<%- js('js/min/search.min.js') %>
+<%- js('js/min/app.min.js') %>
 
