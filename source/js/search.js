@@ -245,6 +245,7 @@ var HexoSearch = function(options) {
   SearchService.apply(this, arguments);
   var self = this;
   var endpoint = "/content.json";
+  self.cache = "";
   
   /**
    * Search queryText in title and content of a post
@@ -328,33 +329,70 @@ var HexoSearch = function(options) {
    */
   self.query = function(queryText, startIndex, callback) {
     self.uiBeforeQuery();
-    $.get(endpoint, {
-      key: self.config.apiKey,
-      cx: self.config.engineId,
-      q: queryText,
-      start: startIndex,
-      num: self.config.per_page
-    }, function(data, status) {
-      if (status !== 'success' || 
-          !data || 
-          (!data.posts && !data.pages) || 
-          (data.posts.length < 1 && data.pages.length < 1)
-        ) {
-        self.onQueryError(queryText, status);
-      }
-      else {
-        var results = ""; 
-        results += self.buildResultList(data.pages, queryText);
-        results += self.buildResultList(data.posts, queryText);
-        self.dom.resultContainer.html(results);
-      }
+    if (!self.cache) {
+      $.get(endpoint, {
+        key: self.config.apiKey,
+        cx: self.config.engineId,
+        q: queryText,
+        start: startIndex,
+        num: self.config.per_page
+      }, function(data, status) {
+        if (status !== 'success' || 
+            !data || 
+            (!data.posts && !data.pages) || 
+            (data.posts.length < 1 && data.pages.length < 1)
+          ) {
+          self.onQueryError(queryText, status);
+        }
+        else {
+          self.cache = data;
+          var results = ""; 
+          results += self.buildResultList(data.pages, queryText);
+          results += self.buildResultList(data.posts, queryText);
+          self.dom.resultContainer.html(results);
+        }
+        self.buildMetadata(data);
+        self.uiAfterQuery();
+        if (callback) {
+          callback(data);
+        }
+      });
+    }
+    else {
+      var results = ""; 
+      results += self.buildResultList(data.pages, queryText);
+      results += self.buildResultList(data.posts, queryText);
+      self.dom.resultContainer.html(results);
       self.buildMetadata(data);
       self.uiAfterQuery();
       if (callback) {
         callback(data);
       }
-    });
+    }
   };
   
   self.init();
+};
+
+/**
+ * TODO
+ * Search by Bing Search API
+ * @param options : (object)
+ */
+var BingSearch = function(options) {
+  SearchService.apply(this, arguments);
+  var self = this;
+  var endpoint = "";
+  
+  self.buildResultList = function(data) {
+    
+  };
+  
+  self.buildMetadata = function(data) {
+    
+  };
+  
+  self.query = function(queryText, startIndex, callback) {
+    
+  };
 };
