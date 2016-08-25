@@ -360,13 +360,13 @@ var HexoSearch = function(options) {
     }
     else {
       var results = ""; 
-      results += self.buildResultList(data.pages, queryText);
-      results += self.buildResultList(data.posts, queryText);
+      results += self.buildResultList(self.cache.pages, queryText);
+      results += self.buildResultList(self.cache.posts, queryText);
       self.dom.resultContainer.html(results);
-      self.buildMetadata(data);
+      self.buildMetadata(self.cache);
       self.uiAfterQuery();
       if (callback) {
-        callback(data);
+        callback(self.cache);
       }
     }
   };
