@@ -18,7 +18,7 @@ navigation:
 # Search
 search: 
   enable: true
-  service: hexo
+  service: hexo # choose from: google, hexo
   api_key: 
   engine_id: 
 
