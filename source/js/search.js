@@ -62,7 +62,7 @@ var SearchService = function(options) {
   };
   
   /**
-   * Generate one result record html
+   * Generate html for one result
    * @param url : (string) url
    * @param title : (string) title
    * @param digest : (string) digest
@@ -93,18 +93,24 @@ var SearchService = function(options) {
    * Searchform submit event handler
    * @param queryText : (string) the query text
    */
-  self.onSubmit = function(queryText) {
+  self.onSubmit = function(event) {
+    event.preventDefault();
+    self.queryText = $(this).children('.search_input').val();
+    
     // UI update
     if (!self.open) {
       self.dom.modal.fadeIn();
       $('body').addClass('modal-active');
     }
     self.dom.searchInput.each(function(index,elem) {
-      $(elem).val(queryText);
+      $(elem).val(self.queryText);
     });
     document.activeElement.blur();
+    
     // Ajax GET
-    self.query(queryText, 1);
+    if (self.query instanceof Function) {
+      self.query(self.queryText, 1);
+    }
   };
   
   self.uiBeforeQuery = function() {
@@ -133,11 +139,7 @@ var SearchService = function(options) {
    */
   self.init = function() {
     self.dom.searchForm.each(function(index,elem) {
-      $(elem).on('submit', function(event) {
-        event.preventDefault();
-        self.queryText = $(this).children('.search_input').val();
-        self.onSubmit(self.queryText);
-      });
+      $(elem).on('submit', self.onSubmit);
     });
     self.dom.overlay.on('click', self.close);
     self.dom.nextButton.on('click', self.nextPage);
