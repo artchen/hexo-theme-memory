@@ -10,17 +10,23 @@ navigation:
   url: /
 - name: About
   slug: about
-  url: http://otakism.org/about
+  url: /about
 - name: Works
   slug: works
-  url: http://otakism.org/works
+  url: /works
 
 # Search
 search: 
   enable: true
-  service: hexo # choose from: google, hexo
-  api_key: 
-  engine_id: 
+  service: algolia # google/hexo/algolia/azure
+  # google 
+  google_api_key: AIzaSyBFj4A2FRz36n1bLiOQbcGhmUdpM-buAZ0
+  google_engine_id: 017821029378163458527:c46kp7iwut4
+  # algolia
+  algolia_app_id: PAM0DKEGE7
+  algolia_api_key: 008d881e77dc9e73065e4635140fce5c
+  algolia_index_name: artifact.me
+  # azure
 
 # Miscellaneous
 google_analytics:

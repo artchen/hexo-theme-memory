@@ -41,6 +41,7 @@ var SearchService = function(options) {
   };
   
   self.open = false;
+  self.percentLoaded = 0;
   self.queryText = "";
   self.nav = {
     next: -1,
@@ -113,16 +114,57 @@ var SearchService = function(options) {
     }
   };
   
+  /**
+   * Start loading bar animation
+   * no param
+   */
+  self.startLoading = function() {
+    self.dom.loadingBar.show();
+    self.loadingTimer = setInterval(function() { 
+      self.percentLoaded = Math.min(self.percentLoaded+5,95);
+      self.dom.loadingBar.css('width', self.percentLoaded+'%');
+    }, 100);
+  };
+  
+  /**
+   * Stop loading bar animation
+   * no param
+   */
+  self.stopLoading = function() {
+    clearInterval(self.loadingTimer);
+    self.dom.loadingBar.css('width', '100%');
+    self.dom.loadingBar.fadeOut();
+    setTimeout(function() {
+      self.percentLoaded = 0;
+      self.dom.loadingBar.css('width', '0%');
+    }, 300);
+  };
+  
+  /**
+   * UI change before sending query
+   * no param
+   */
   self.uiBeforeQuery = function() {
     self.dom.errorContainer.hide();
     self.dom.ajaxContent.removeClass('loaded');
+    self.startLoading();
   };
   
+  /**
+   * UI change after sending query
+   * no param
+   */
   self.uiAfterQuery = function() {
     self.dom.modalBody.scrollTop(0);
     self.dom.ajaxContent.addClass('loaded');
+    self.stopLoading();
   };
   
+  /**
+   * Query error handler
+   * @param queryText: (string)
+   * @param status: (string)
+   */
   self.onQueryError = function(queryText, status) {
     var errMsg = "";
     if (status === "success") errMsg = "No result found for \"" +queryText+ "\".";
@@ -377,11 +419,129 @@ var HexoSearch = function(options) {
 };
 
 /**
- * TODO
- * Search by Bing Search API
+ * Search by Algolia Search
  * @param options : (object)
  */
-var BingSearch = function(options) {
+var AlgoliaSearch = function(options) {
+  SearchService.apply(this, arguments);
+  var self = this;
+  var endpoint = "https://" +options.appId+ ".algolia.net/1/indexes/" +options.indexName;
+  
+  /**
+   * Generate result list html
+   * @param data : (array) result items
+   */
+  self.buildResultList = function(data) {
+    var html = "";
+    $.each(data, function(index, row) {
+      var url = row.permalink || row.path || "";
+      if (!row.permalink && row.path) {
+        url = "/" + url;
+      }
+      var title = row.title;
+      var digest = row._highlightResult.excerptStrip.value || "";
+      html += self.buildResult(url, title, digest);
+    });
+    return html;
+  };
+  
+  /**
+   * Generate metadata after a successful query
+   * @param data : (object) the raw google custom search response data
+   */
+  self.buildMetadata = function(data) {
+    self.nav.current = data.page * data.hitsPerPage + 1;
+    self.nav.currentCount = data.hits.length;
+    self.nav.total = parseInt(data.nbHits);
+    self.dom.metadata.children('.total').html(self.nav.total);
+    self.dom.metadata.children('.range').html(self.nav.current + "-" + (self.nav.current+self.nav.currentCount-1));
+    if (self.nav.total > 0) {
+      self.dom.metadata.show();
+    }
+    else {
+      self.dom.metadata.hide();
+    }
+
+    if (data.page < data.nbPages-1) {
+      self.nav.next = (data.page+1)+1;
+      self.dom.nextButton.show();
+    }
+    else {
+      self.nav.next = -1;
+      self.dom.nextButton.hide();
+    }
+    if (data.page > 0) {
+      self.nav.prev = (data.page+1)-1;
+      self.dom.prevButton.show();
+    }
+    else {
+      self.nav.prev = -1;
+      self.dom.prevButton.hide();
+    }
+  };
+  
+  /**
+   * Send a GET request
+   * @param queryText : (string) the query text
+   * @param page : (int) the current page (start from 1)
+   * @param callback : (function)
+   */
+  self.query = function(queryText, page, callback) {
+    self.uiBeforeQuery();
+    $.get(endpoint, {
+      query: queryText,
+      page: page-1,
+      hitsPerPage: self.config.per_page,
+      "x-algolia-application-id": self.config.appId,
+      "x-algolia-api-key": self.config.apiKey
+    }, function(data, status) {
+      if (status === 'success' && data.hits && data.hits.length > 0) {
+        var results = self.buildResultList(data.hits); 
+        self.dom.resultContainer.html(results);
+      }
+      else {
+        self.onQueryError(queryText, status);
+      }
+      self.buildMetadata(data);
+      self.uiAfterQuery();
+      if (callback) {
+        callback(data);
+      }
+    });
+  };
+  
+  self.init();
+};
+
+/**
+ * TODO
+ * Search by Azure Search API
+ * @param options : (object)
+ */
+var AzureSearch = function(options) {
+  SearchService.apply(this, arguments);
+  var self = this;
+  var endpoint = "";
+  
+  self.buildResultList = function(data) {
+    
+  };
+  
+  self.buildMetadata = function(data) {
+    
+  };
+  
+  self.query = function(queryText, startIndex, callback) {
+    
+  };
+};
+
+/**
+ * TODO
+ * Search by Baidu Search API
+ * @param options : (object)
+ */
+var BaiduSearch = function(options) {
   SearchService.apply(this, arguments);
   var self = this;
   var endpoint = "";

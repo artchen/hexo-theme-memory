@@ -43,11 +43,23 @@
     	  engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID
   	  });
 	  }
-	  else if (SEARCH_SERVICE === 'bing') {
-  	  customSearch = new BingSearch();
+	  else if (SEARCH_SERVICE === 'algolia') {
+  	  customSearch = new AlgoliaSearch({
+    	  apiKey: ALGOLIA_API_KEY,
+    	  appId: ALGOLIA_APP_ID,
+    	  indexName: ALGOLIA_INDEX_NAME
+  	  });
 	  }
 	  else if (SEARCH_SERVICE === 'hexo') {
   	  customSearch = new HexoSearch();
+	  }
+	  else if (SEARCH_SERVICE === 'azure') {
+  	  customSearch = new AzureSearch({
+    	  
+  	  });
+	  }
+	  else if (SEARCH_SERVICE === 'baidu') {
+  	  customSearch = new BaiduSearch();
 	  }
 
 	});

@@ -19,8 +19,11 @@
 
 <%- js('js/jquery.fitvids.js') %>
 <script>
-	var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.api_key %>";
-	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.engine_id %>";
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google_api_key %>";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.google_engine_id %>";
+	var ALGOLIA_API_KEY = "<%- theme.search.algolia_api_key %>";
+	var ALGOLIA_APP_ID = "<%- theme.search.algolia_app_id %>";
+	var ALGOLIA_INDEX_NAME = "<%- theme.search.algolia_index_name %>";
   var SEARCH_SERVICE = "<%- theme.search.service %>";
 </script>
 <%- js('js/search.js') %>
