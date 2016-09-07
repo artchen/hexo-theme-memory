@@ -18,15 +18,20 @@ navigation:
 # Search
 search: 
   enable: true
-  service: algolia # google/hexo/algolia/azure
+  service: google # google/hexo/algolia/azure/baidu
   # google 
-  google_api_key: AIzaSyBFj4A2FRz36n1bLiOQbcGhmUdpM-buAZ0
-  google_engine_id: 017821029378163458527:c46kp7iwut4
+  google_api_key:
+  google_engine_id:
   # algolia
-  algolia_app_id: PAM0DKEGE7
-  algolia_api_key: 008d881e77dc9e73065e4635140fce5c
-  algolia_index_name: artifact.me
+  algolia_app_id:
+  algolia_api_key:
+  algolia_index_name:
   # azure
+  azure_service_name:
+  azure_index_name:
+  azure_query_key:
+  # baidu
+  baidu_api_id:
 
 # Miscellaneous
 google_analytics:

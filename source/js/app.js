@@ -1,9 +1,8 @@
+var customSearch;
 (function($) {
 	
 	"use strict";
-	
-	var customSearch = {};
-  
+
   var scrolltoElement = function(e) {
     e.preventDefault();
     var self = $(this),
@@ -55,11 +54,15 @@
 	  }
 	  else if (SEARCH_SERVICE === 'azure') {
   	  customSearch = new AzureSearch({
-    	  
+    	  serviceName: AZURE_SERVICE_NAME,
+        indexName: AZURE_INDEX_NAME,
+        queryKey: AZURE_QUERY_KEY
   	  });
 	  }
 	  else if (SEARCH_SERVICE === 'baidu') {
-  	  customSearch = new BaiduSearch();
+  	  customSearch = new BaiduSearch({
+				apiId: BAIDU_API_ID
+			});
 	  }
 
 	});
