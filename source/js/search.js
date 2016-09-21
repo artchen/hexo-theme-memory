@@ -30,12 +30,13 @@ var SearchService = "";
         btn_prev: "#u-search .btn-prev"
       },
       brands: {
-        'google': {logo: '/images/google.svg', url: 'https://cse.google.com'},
-        'algolia': {logo: '/images/algolia.svg', url: 'https://www.algolia.com'},
+        'google': {logo: 'google.svg', url: 'https://cse.google.com'},
+        'algolia': {logo: 'algolia.svg', url: 'https://www.algolia.com'},
         'hexo': {logo: '', url: ''},
-        'azure': {logo: '/images/azure.svg', url: 'https://azure.microsoft.com/en-us/services/search/'},
-        'baidu': {logo: '/images/baidu.svg', url: 'http://zn.baidu.com/cse/home/index'}
-      }
+        'azure': {logo: 'azure.svg', url: 'https://azure.microsoft.com/en-us/services/search/'},
+        'baidu': {logo: 'baidu.svg', url: 'http://zn.baidu.com/cse/home/index'}
+      },
+      imagePath: "/img/"
     }, options);
 
     self.dom = {};
@@ -154,8 +155,10 @@ var SearchService = "";
      */
     self.onSubmit = function(event) {
       event.preventDefault();
-      self.queryText = $(this).children('.u-search-input').val();
-      self.search(1);
+      self.queryText = $(this).find('.u-search-input').val();
+      if (self.queryText) {
+        self.search(1);
+      }
     };
     
     /**
@@ -191,12 +194,22 @@ var SearchService = "";
     self.addLogo = function(service) {
       var html = "";
       if (self.config.brands[service] && self.config.brands[service].logo) {
-        html += "<a href='" +self.config.brands[service].url+ "'>";
-        html +=    '<img src="' +self.config.brands[service].logo+ '" />';
+        html += "<a href='" +self.config.brands[service].url+ "' class='" +service+ "'>";
+        html +=    '<img src="' +self.config.imagePath+self.config.brands[service].logo+ '" />';
         html += "</a>";
         self.dom.modal_logo.html(html);
-        self.dom.modal_logo.addClass(service);
       }
+    };
+
+    self.destroy = function() {
+      self.dom.form.each(function(index,elem) {
+        $(elem).off('submit');
+      });
+      self.dom.modal_overlay.off('click');
+      self.dom.btn_close.off('click');
+      self.dom.btn_next.off('click');
+      self.dom.btn_prev.off('click');
+      self.dom.container.remove();
     };
     
     /**
@@ -206,6 +219,7 @@ var SearchService = "";
     self.init = function() {
       $('body').append(template);
       self.parseSelectors();
+      self.dom.modal_footer.show();
       self.dom.form.each(function(index,elem) {
         $(elem).on('submit', self.onSubmit);
       });
@@ -317,6 +331,7 @@ var AlgoliaSearch;
       });
     };
     
+    return self;
   };
 
 })(jQuery);
@@ -426,6 +441,7 @@ var AzureSearch;
       });
     };
 
+    return self;
   };
 
 })(jQuery);
@@ -445,6 +461,28 @@ var BaiduSearch;
     var endpoint = "";
     self.addLogo('baidu');
 
+    /**
+     * Generate result list html
+     * @param data : (array) result items
+     */
+    self.buildResultList = function(data, queryText) {
+      var results = [],
+          html = "";
+      $.each(data, function(index, post) {
+        if (self.contentSearch(post, queryText))
+          html += self.buildResult(post.linkUrl, post.title, post.abstract);
+      });
+      return html;
+    };
+    
+    /**
+     * Generate metadata after a successful query
+     * @param data : (object) the raw google custom search response data
+     */
+    self.buildMetadata = function(data) {
+
+    };
+
     self.loadScript = function() {
       self.dom.input.each(function(index,elem) {
         $(elem).attr('disabled', true);
@@ -455,6 +493,7 @@ var BaiduSearch;
 
     self.initBaidu = function() {
       self.cse = new BCse.Search(self.config.apiId);
+      //self.cse.setPageNum(self.config.per_page);
       self.dom.input.each(function(index,elem) {
         $(elem).attr('disabled', false);
       });
@@ -467,17 +506,37 @@ var BaiduSearch;
      * @param callback {Function}
      */
     self.query = function(queryText, page, callback) {
-      self.cse.setPageNum(self.config.per_page);
       self.cse.getResult(queryText, function(data) {
+        console.log("Searching: " + queryText);
         console.log(data);
+        self.cse.getError(function(data) {
+          console.log(data);
+        });
+        if (data.length > 0) {
+          self.buildResultList(data, queryText);
+          self.cse.getSearchInfo(queryText, function(data) {
+            console.log(data);
+            self.buildMetadata(data);
+          });
+        }
+        else {
+          self.nav.total = 0;
+          self.nav.next = -1;
+          self.nav.prev = -1;
+          self.dom.modal_metadata.hide();
+          self.dom.btn_next.hide();
+          self.dom.btn_prev.hide();
+          self.onQueryError(queryText, "success");
+        }
         if (callback instanceof Function) {
           callback();
         }
-      }, page);
+      });
     };
 
     self.loadScript();
     
+    return self;
   };
 
 })(jQuery);
@@ -573,6 +632,7 @@ var GoogleCustomSearch = "";
       });
     };
     
+    return self;
   };
 })(jQuery);
 var HexoSearch;
@@ -587,7 +647,7 @@ var HexoSearch;
   HexoSearch = function(options) {
     SearchService.apply(this, arguments);
     var self = this;
-    var endpoint = "/content.json";
+    self.config.endpoint = (options||{}).endpoint || "/content.json";
     self.cache = "";
     
     /**
@@ -673,7 +733,7 @@ var HexoSearch;
      */
     self.query = function(queryText, startIndex, callback) {
       if (!self.cache) {
-        $.get(endpoint, {
+        $.get(self.config.endpoint, {
           key: self.config.apiKey,
           cx: self.config.engineId,
           q: queryText,
@@ -712,6 +772,7 @@ var HexoSearch;
       }
     };
     
+    return self;
   };
 
 })(jQuery);
