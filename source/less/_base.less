@@ -40,6 +40,13 @@ body {
       left: 0;
   	}
   }
+  &.menu-open {
+
+    #site-menu {
+      transform: translate3d(0, 0, 0);
+      visibility: visible;
+    }
+  }
 }
 
 ::-moz-selection {
@@ -170,13 +177,6 @@ pre {
 }
 .left {
   float: left;
-}
-
-body.menu-open {
-
-	#site-menu {
-		transform: translate3d(0, 0, 0);
-	}
 }
 
 /**
