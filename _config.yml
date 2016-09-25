@@ -11,9 +11,9 @@ navigation:
 - name: About
   slug: about
   url: /about
-- name: Works
-  slug: works
-  url: /works
+- name: Archives
+  slug: archives
+  url: /archives
 
 # Search
 search: 

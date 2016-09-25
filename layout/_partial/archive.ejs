@@ -4,6 +4,18 @@
   </section>
 <% } %>
 
+<% if (is_archive()) { %>
+	<section class="page-header archive">
+    <h1>- <span><%= page.year %><%= page.month ? '.' + page.month : '' %></span> -</h1>
+  </section>
+<% } %>
+
+<% if (is_category()) { %>
+	<section class="page-header category">
+    <h1>- <span><%= page.category %></span> -</h1>
+  </section>
+<% } %>
+
 <section class="post-list">
 	<% page.posts.each(function(post){ %>
     <%- partial('post', {post: post}) %>
