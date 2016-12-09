@@ -18,8 +18,8 @@
       title = 'Tag: ' + page.tag;
   %>
   <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
-  <meta name="description" content="{{theme.description}}" />
-  <meta name="keywords" content="{{theme.keywords}}" />
+  <meta name="description" content="<%- theme.description %>" />
+  <meta name="keywords" content="<%- theme.keywords %>" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
