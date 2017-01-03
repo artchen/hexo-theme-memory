@@ -30,7 +30,7 @@
   <% if (theme.favicon) { %>
     <link rel="icon" href="<%- theme.favicon %>">
   <% } %>
-  
+
 	<script src="https://use.typekit.net/eyf3hir.js"></script>
   <script>try{Typekit.load({ async: false });}catch(e){}</script>
   <%- css('style.css') %>
@@ -39,4 +39,5 @@
       document.getElementById('loading-bar').style.width=num+"%";
     }
   </script>
+  <%- partial('google-analytics') %>
 </head>

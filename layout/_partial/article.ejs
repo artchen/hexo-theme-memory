@@ -13,7 +13,7 @@
   	<div class="article-entry" itemprop="articleBody">
     	<%- post.content %>
   	</div>
-	  
+
 	  <div class="article-tags tags">
 		  <% if (post.tags && post.tags.length){ %>
         <%- list_tags(post.tags, {
@@ -30,4 +30,11 @@
 <section id="comments">
 	<div id="disqus_thread"></div>
 </section>
+<% } %>
+
+<% if (post.comments && config.duoshuo_shortname){ %>
+<div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="<%=post.path%>" data-title="<%=post.title%>" data-url="<%=url%>"></div>
+</div>
 <% } %>
