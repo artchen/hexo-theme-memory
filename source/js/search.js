@@ -200,7 +200,7 @@ var SearchService = "";
       var html = "";
       if (self.config.brands[service] && self.config.brands[service].logo) {
         html += "<a href='" +self.config.brands[service].url+ "' class='" +service+ "'>";
-        html +=    '<img src="' +HexoConfig.root.substr(0,HexoConfig.root.length-1)+self.config.imagePath+self.config.brands[service].logo+ '" />';
+        html +=    '<img src="' +(HexoConfig.root+self.config.imagePath).replace(/\/{2,}/g, '/')+self.config.brands[service].logo+ '" />';
         html += "</a>";
         self.dom.modal_logo.html(html);
       }
@@ -653,7 +653,7 @@ var HexoSearch;
   HexoSearch = function(options) {
     SearchService.apply(this, arguments);
     var self = this;
-    self.config.endpoint = (HexoConfig.root + ((options||{}).endpoint || "/content.json")).replace('//', '/');
+    self.config.endpoint = (HexoConfig.root + ((options||{}).endpoint || "/content.json")).replace(/\/{2,}/g, '/');
     self.cache = "";
     
     /**
