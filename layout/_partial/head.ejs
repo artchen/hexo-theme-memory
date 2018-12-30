@@ -30,6 +30,16 @@
   <% if (theme.favicon) { %>
     <link rel="icon" href="<%- theme.favicon %>">
   <% } %>
+  
+  <script type="text/javascript">
+    //Export hexo config to js
+    var HexoConfig = {
+      root: '<%= config.root %>',
+      search: {
+        enabled: '<%= theme.search.enable %>'
+      }
+    };
+  </script>
 
 	<script src="https://use.typekit.net/eyf3hir.js"></script>
   <script>try{Typekit.load({ async: false });}catch(e){}</script>
