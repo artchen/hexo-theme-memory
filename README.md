@@ -8,58 +8,20 @@ This theme is also available on:
 
 ## Dependencies
 
-This theme depends on the following Hexo plugins to work correctly:
+Recommended list of plugins:
 
+* hexo-all-minifier
+* hexo-autoprefixer
+* hexo-front-matter
+* hexo-generator-archive
+* hexo-generator-category
+* hexo-generator-feed
+* hexo-generator-index
 * hexo-generator-tag
-* hexo-renderer-ejs
-* hexo-renderer-less
-* hexo-renderer-marked
 * hexo-pagination
-
-If you are to use hexo local search instead: 
-
-* hexo-generator-json-content
-
-and add the following to your global `_config.yml`:
-
-```
-# Generator json content
-jsonContent:
-  meta: false
-  keywords: false
-  pages:
-    title: true
-    slug: false
-    date: false
-    updated: false
-    comments: false
-    path: false
-    link: false
-    permalink: true
-    excerpt: false
-    keywords: false
-    text: true
-    raw: false
-    content: false
-  posts:
-    title: true
-    slug: false
-    date: false
-    updated: false
-    comments: false
-    path: false
-    link: false
-    permalink: true
-    excerpt: false
-    keywords: false
-    text: true
-    raw: false
-    content: false
-    categories: false
-    tags: false
-```
-
-Please make sure these plugins are installed before generate the site.
+* hexo-renderer-less
+* hexo-renderer-ejs
+* hexo-renderer-marked
 
 ## Customization
 
@@ -76,10 +38,9 @@ In addition to these settings, users may also want to edit/replace the following
 * The icon fonts are from [icomoon](https://icomoon.io/).
 * The default English font is Futura PT via Adobe Typekit. If you are using Typekit like me, please change the embedded javascript code in `layout/_partial/head.ejs`, else you can delete the corresponding code.
 
-This theme currently support 4 search services:
+This theme currently support 3 search services:
 
 * Google custom search
-* Hexo Local search (hexo-json-content)
 * Algolia search
 * Microsoft Azure search
 

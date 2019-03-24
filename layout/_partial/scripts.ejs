@@ -41,9 +41,32 @@
   var AZURE_SERVICE_NAME = "<%- theme.search.azure_service_name %>";
   var AZURE_INDEX_NAME = "<%- theme.search.azure_index_name %>";
   var AZURE_QUERY_KEY = "<%- theme.search.azure_query_key %>";
-  var BAIDU_API_ID = "<%- theme.search.baidu_api_id %>";
   var SEARCH_SERVICE = "<%- theme.search.service %>";
+  var universalSearchConfig = {};
+  if (SEARCH_SERVICE === 'google') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
+      engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID,
+      imagePath: "<%= url_for('/images/') %>"
+    };
+  } else if (SEARCH_SERVICE === 'algolia') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: ALGOLIA_API_KEY,
+      appId: ALGOLIA_APP_ID,
+      indexName: ALGOLIA_INDEX_NAME,
+      imagePath: "<%= url_for('/images/') %>"
+    };
+  } else if (SEARCH_SERVICE === 'azure') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      serviceName: AZURE_SERVICE_NAME,
+      indexName: AZURE_INDEX_NAME,
+      apiKey: AZURE_QUERY_KEY,
+      imagePath: "<%= url_for('/images/') %>"
+    };
+  }
 </script>
-<%- js('js/search.js') %>
 <%- js('js/app.js') %>
-
+<%- js('js/search.js') %>

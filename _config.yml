@@ -1,7 +1,7 @@
 # Meta
 description: A minimal hexo theme.
-keywords: hexo,theme,typescript,otakism,otaku
-site_desc: otaku keeps alive
+keywords: hexo,theme,minimal,otakism
+site_desc: your catch phrase
 
 # Navigation
 navigation:
@@ -30,13 +30,11 @@ search:
   azure_service_name:
   azure_index_name:
   azure_query_key:
-  # baidu
-  baidu_api_id:
 
 # Miscellaneous
 google_analytics:
 favicon: /favicon.png
-author_url: http://rakugaki.me
+author_url: https://example.com
 
 # Less
 less:
@@ -45,28 +43,26 @@ less:
 # use url, not username
 social:
 - slug: email
-  url: #mailto:i@artifact.me
+  url: #mailto:me@example.com
 - slug: github
-  url: https://github.com/artchen
+  url: #https://github.com/<id>
 - slug: twitter
-  url: https://twitter.com/otakism
+  url: #https://twitter.com/<id>
 - slug: rss
 	url: /atom.xml
-- slug: google
-  url: https://plus.google.com/+ArtChenOtakism/posts
 - slug: facebook
-  url: # https://www.facebook.com/zanchoret
+  url: #https://www.facebook.com/<id>
 - slug: linkedin
-  url: # https://www.linkedin.com/in/buzun
+  url: #https://www.linkedin.com/in/<id>
 - slug: sina-weibo
-  url: http://weibo.com/otakism/
+  url: #http://weibo.com/<id>
 - slug: tumblr
-  url: # http://artchen.tumblr.com
+  url: #http://<id>.tumblr.com
 - slug: dribbble
-  url: # https://dribbble.com/artchen
+  url: #https://dribbble.com/<id>
 - slug: pinterest
-  url: # https://www.pinterest.com/otakism/
+  url: #https://www.pinterest.com/<id>
 - slug: instagram
-  url: # https://instagram.com/otakism/
+  url: #https://instagram.com/<id>
 - slug: behance
-  url: # https://www.behance.net/artchen
+  url: #https://www.behance.net/<id>
