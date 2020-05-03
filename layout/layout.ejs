@@ -1,26 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
 <%- partial('_partial/head') %>
 <body>
-  
-  <%- partial('_partial/loading') %>
-  <script>setLoadingBarProgress(20)</script>
-  
-  <div id="site-wrapper">
-    
+
+<%- partial('_partial/loading') %>
+<script>setLoadingBarProgress(20)</script>
+
+<div id="site-wrapper">
+
     <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
     <script>setLoadingBarProgress(40);</script>
-    
+
     <main id="main" role="main">
-      <%- body %>
-      <script>setLoadingBarProgress(60);</script>
+        <%- body %>
+        <script>setLoadingBarProgress(60);</script>
     </main>
-    
+
     <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
     <script>setLoadingBarProgress(80);</script>
-    
-  </div>
+    <div class="overlay"></div>
+</div>
 
-  <%- partial('_partial/scripts') %>
-  <script>setLoadingBarProgress(100);</script>
-  
+<%- partial('_partial/sidebar', {post: page}) %>
+<%- partial('_partial/scripts') %>
+<script>setLoadingBarProgress(100);</script>
+
 </body>
 </html>

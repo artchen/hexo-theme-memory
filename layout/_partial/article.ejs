@@ -1,35 +1,34 @@
 <article id="<%= post.layout %>-<%= post.slug %>"
-  class="post article white-box article-type-<%= post.layout %>"
-  itemscope itemprop="blogPost">
-	<h2 class="title">
-  	<a href="<%- url_for(post.path) %>">
-    	<%= post.title %>
-    </a>
-  </h2>
-	<time>
-	  <%= date(post.date, 'MMM D, YYYY') %>
-	</time>
-	<section class="content">
-  	<div class="article-entry" itemprop="articleBody">
-    	<%- post.content %>
-  	</div>
-
-	  <div class="article-tags tags">
-		  <% if (post.tags && post.tags.length){ %>
-        <%- list_tags(post.tags, {
-          show_count: false,
-          style: 'none',
-          separator: ''
-        }) %>
-      <% } %>
-	  </div>
-	</section>
+         class="post article white-box article-type-<%= post.layout %>"
+         itemscope itemprop="blogPost">
+    <h2 class="title">
+        <a href="<%- url_for(post.path) %>">
+            <%= post.title %>
+        </a>
+    </h2>
+    <time>
+        <%= date(post.date, 'MMM D, YYYY') %>
+    </time>
+    <section class="content">
+        <div class="article-entry" itemprop="articleBody">
+            <%- post.content %>
+        </div>
+        <div class="article-tags tags">
+            <% if (post.tags && post.tags.length){ %>
+                <%- list_tags(post.tags, {
+                    show_count: false,
+                    style: 'none',
+                    separator: ''
+                }) %>
+            <% } %>
+        </div>
+    </section>
 </article>
 
 <% if (post.comments && config.disqus_shortname){ %>
-<section id="comments">
-	<div id="disqus_thread"></div>
-</section>
+    <section id="comments">
+        <div id="disqus_thread"></div>
+    </section>
 <% } %>
 
 <% if (post.comments && config.duoshuo_shortname){ %>

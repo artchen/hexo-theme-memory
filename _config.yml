@@ -1,13 +1,10 @@
 # Meta
 description: A minimal hexo theme.
-keywords: hexo,theme,minimal,otakism
-site_desc: your catch phrase
+keywords: hexo,theme,otakism,otaku
+site_desc: otaku keeps alive
 
 # Navigation
-navigation:
-- name: Home
-  slug: home
-  url: /
+menu:
 - name: About
   slug: about
   url: /about
@@ -17,8 +14,8 @@ navigation:
 
 # Search
 search: 
-  enable: true
-  service: google # google/hexo/algolia/azure/baidu
+  enable: false
+  service: #google/hexo/algolia/azure
   # google 
   google_api_key:
   google_engine_id:
@@ -33,36 +30,40 @@ search:
 
 # Miscellaneous
 google_analytics:
-favicon: /favicon.png
-author_url: https://example.com
+author_url: https://artifact.me
 
-# Less
-less:
-  compress: true
+# Scss
+node_sass:
+  debug: false
+  outputStyle: nested
+  precision: 5
+  sourceComments: false
 
 # use url, not username
 social:
 - slug: email
-  url: #mailto:me@example.com
+  url:
 - slug: github
-  url: #https://github.com/<id>
+  url: https://github.com/artchen
 - slug: twitter
-  url: #https://twitter.com/<id>
+  url:
 - slug: rss
-	url: /atom.xml
+  url: /atom.xml
+- slug: google
+  url:
 - slug: facebook
-  url: #https://www.facebook.com/<id>
+  url:
 - slug: linkedin
-  url: #https://www.linkedin.com/in/<id>
+  url:
 - slug: sina-weibo
-  url: #http://weibo.com/<id>
+  url:
 - slug: tumblr
-  url: #http://<id>.tumblr.com
+  url:
 - slug: dribbble
-  url: #https://dribbble.com/<id>
+  url:
 - slug: pinterest
-  url: #https://www.pinterest.com/<id>
+  url:
 - slug: instagram
-  url: #https://instagram.com/<id>
+  url:
 - slug: behance
-  url: #https://www.behance.net/<id>
+  url:

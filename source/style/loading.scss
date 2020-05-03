@@ -1,0 +1,17 @@
+@import "variables";
+
+#loading-bar-wrapper {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  z-index: 999;
+}
+#loading-bar {
+  position: relative;
+  width: 0;
+  height: 2px;
+  background-color: fade(lighten($accent-color, 2%), 100%);
+  transition: all 0.5s ease;
+}

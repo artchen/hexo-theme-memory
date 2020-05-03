@@ -1,3 +1,5 @@
+@import "variables";
+
 #archive-page {
 
   .archive {
@@ -15,14 +17,14 @@
         transition: all ease 0.24s;
 
         &:hover {
-          border-left-color: lighten(@accent-color,10%);
-          background: lighten(@background-color,2%);
+          border-left-color: lighten($accent-color,10%);
+          background: lighten($background-color,2%);
         }
       }
     }
     .archive-year {
       font-size: 16px;
-      margin: 10px 0px;
+      margin: 10px 0;
     }
     .archive-post {
       time {
@@ -31,7 +33,7 @@
       }
       .title {
         font-size: 14px;
-        color: @accent-color;
+        color: $accent-color;
       }
     }
   }

@@ -1,0 +1,74 @@
+<div class="site-sidebar" id="site-sidebar">
+
+    <% display_toc = (is_post() || is_page()) && post.toc === true; %>
+
+    <div class="sidebar-switch clearfix <%- display_toc ? 'show' : '' %>"
+         style="display: <%- display_toc ? 'block' : 'none' %>">
+        <a class="dark-btn active" data-toggle="toc">
+            <span class="icon icon-list"></span>
+            <span class="text">Index</span>
+        </a>
+        <a class="dark-btn" data-toggle="bio">
+            <span class="icon icon-person"></span>
+            <span class="text">Bio</span>
+        </a>
+    </div>
+
+    <div class="site-toc <%- display_toc ? 'show' : '' %>"
+         style="display: <%- display_toc ? 'block' : 'none' %>">
+        <% if ( display_toc ) { %>
+            <%- toc(post.content) %>
+        <% } else { %>
+            <div class="no-index">No Index</div>
+        <% } %>
+    </div>
+
+    <div class="site-bio <%- display_toc ? '' : 'show' %>"
+         style="display: <%- display_toc ? 'none' : 'block' %>">
+
+        <div class="about-me clearfix">
+            <div class="avatar">
+                <img src="<%= url_for('/img/avatar.png') %>"/>
+            </div>
+            <div class="info">
+                <a class="name dark-btn" href="<%= url_for('/about') %>">
+                    <%- config.author %>
+                </a>
+            </div>
+            <div class="info">
+                <span class="item desc">
+                    <%- config.description %>
+                </span>
+            </div>
+        </div>
+
+        <div class="menu section">
+            <ul class="clearfix">
+                <% theme.menu.forEach(function(value, key) {
+                if (value.url && value.slug && value.name) { %>
+                    <li class="<%= key % 2 === 0 ? 'left' : 'right' %>">
+                        <a href="<%= value.url %>"
+                           onfocus="this.blur();"
+                           class="nav-<%= value.slug %> dark-btn block">
+                            <%= value.name %>
+                        </a>
+                    </li>
+                <% } }); %>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="shortcuts">
+        <a href="#header" class="top window-nav dark-btn" id="go-top">
+            <span class="icon icon-chevron-thin-up"></span>
+        </a>
+        <a class="close dark-btn" id="sidebar-close">
+            <span class="icon icon-close"></span>
+        </a>
+        <a href="#footer" class="top window-nav dark-btn" id="go-bottom">
+            <span class="icon icon-chevron-thin-down"></span>
+        </a>
+    </div>
+
+</div>

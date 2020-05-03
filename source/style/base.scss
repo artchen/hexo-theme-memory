@@ -1,11 +1,8 @@
-/* Basic Settings */
+@import "variables";
 
 * {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	box-sizing: border-box;
-	outline: none;
+  box-sizing: border-box;
+  outline: none;
   margin: 0;
   padding: 0;
 }
@@ -13,50 +10,55 @@
 /* My Base */
 
 html {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
-	width: 100%;
-	height: 100%;
-  font-family: @base-font-family;
+  width: 100%;
+  height: 100%;
+  font-family: $base-font-family;
   font-size: 1.8rem;
   line-height: 1.5em;
-  color: @text-color;
+  color: $text-color;
   text-rendering: geometricPrecision;
-  background-color: @background-color;
-  
+  background-color: $background-color;
+
   &.modal-active {
     overflow: hidden;
-    
-    @media (max-width: @modal-threshold) {
-  		position: fixed;
+
+    @media (max-width: $modal-threshold) {
+      position: fixed;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-  	}
+    }
   }
   &.menu-open {
-
-    #site-menu {
+    #site-wrapper {
+      transform: translate3d(-280px, 0, 0);
+      .overlay {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    #site-sidebar {
       transform: translate3d(0, 0, 0);
-      visibility: visible;
     }
   }
 }
 
 ::-moz-selection {
-  background: fade(lighten(@material-orange, 15%), 70%);
-  color: @black;
+  background: fade(lighten($material-orange, 15%), 70%);
+  color: $black;
 }
 
 ::selection {
-  background: fade(lighten(@material-orange, 15%), 70%);
-  color: @black;
+  background: fade(lighten($material-orange, 15%), 70%);
+  color: $black;
 }
 
 h1, h2, h3,
@@ -93,7 +95,7 @@ h6 {
 }
 
 a {
-  color: @black;
+  color: $black;
   text-decoration: none;
   transition: all 0.24s ease;
 
@@ -103,10 +105,7 @@ a {
 }
 
 pre {
-	tab-size: 2;
-  -moz-tab-size: 2;
-  -o-tab-size: 2;
-  -webkit-tab-size: 2;
+  tab-size: 2;
 
   code {
     display: block;
@@ -119,23 +118,23 @@ pre {
 }
 
 ::-webkit-input-placeholder {
-  color: lighten(@grey-color, 20%);
-  font-weight: 300;
+  color: lighten($grey-color, 20%);
+  font-weight: normal;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-  color: lighten(@grey-color, 20%);
-  font-weight: 300;
+  color: lighten($grey-color, 20%);
+  font-weight: normal;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-  color: lighten(@grey-color, 20%);
-  font-weight: 300;
+  color: lighten($grey-color, 20%);
+  font-weight: normal;
 }
 
 :-ms-input-placeholder {
-  color: lighten(@grey-color, 20%);
-  font-weight: 300;
+  color: lighten($grey-color, 20%);
+  font-weight: normal;
 }
 
 /**
@@ -185,53 +184,37 @@ pre {
 #site-wrapper {
   position: relative;
   min-height: 100%;
-  background: @background-color;
-  overflow-x: hidden;
-	transition: all 0.24s ease;
-	z-index: 2;
-}
+  background: $background-color;
+  overflow: hidden;
+  transition: all 0.24s ease;
+  z-index: 10;
 
-.dark-btn {
-  display: inline-block;
-  background: rgba(0,0,0,0.3);
-  border: 1px solid black;
-  padding: 0px 15px;
-  font-size: 13px;
-  font-family: @base-font-family;
-  text-align: center;
-  color: lighten(#8f8f8f, 20%);
-
-  &:hover {
-    color: lighten(#8f8f8f, 40%);
-    background-color: @brand-color;
-  }
-  .icon {
-    margin-right: 5px;
-    font-size: 16px;
-    vertical-align: middle;
-    line-height: 44px;
-  }
-  .text {
-    vertical-align: middle;
-    line-height: 44px;
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    opacity: 0;
+    background-color: fade($white, 50%);
+    transition: all 0.24s ease;
+    visibility: hidden;
+    z-index: 9999;
   }
 }
 
 /**
- *  Loading bar
+  Ad Slots
  */
-#loading-bar-wrapper {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  overflow: visible;
-  z-index: 999;
+.google-auto-placed {
+  .adsbygoogle {
+    margin: 0 auto;
+  }
 }
-#loading-bar {
-  position: relative;
-  width: 0;
-  height: 2px;
-  background-color: fade(lighten(@accent-color, 2%), 100%);
-  transition: all 0.5s ease;
+.treat-block {
+  margin: 30px 0;
+  .adsbygoogle {
+    margin: 0 auto;
+  }
 }

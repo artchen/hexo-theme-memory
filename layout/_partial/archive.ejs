@@ -1,29 +1,29 @@
 <% if (is_tag()) { %>
-	<section class="page-header tag">
+  <section class="page-header tag">
     <h1>- <span><%= page.tag %></span> -</h1>
   </section>
 <% } %>
 
 <% if (is_archive()) { %>
-	<section class="page-header archive">
+  <section class="page-header archive">
     <h1>- <span><%= page.year %><%= page.month ? '.' + page.month : '' %></span> -</h1>
   </section>
 <% } %>
 
 <% if (is_category()) { %>
-	<section class="page-header category">
+  <section class="page-header category">
     <h1>- <span><%= page.category %></span> -</h1>
   </section>
 <% } %>
 
 <section class="post-list">
-	<% page.posts.each(function(post){ %>
+  <% page.posts.each(function(post){ %>
     <%- partial('post', {post: post}) %>
   <% }) %>
 </section>
 
 <% if (page.total > 1) { %>
-  <nav id="page-nav">
+  <nav id="page-nav" class="clearfix">
     <% if (page.prev != 0) { %>
     <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
       <span class="icon icon-chevron-left"></span>
@@ -37,5 +37,4 @@
     </a>
     <% } %>
   </nav>
-  
 <% } %>

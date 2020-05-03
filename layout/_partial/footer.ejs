@@ -1,30 +1,32 @@
 <footer id="footer" class="clearfix">
-  
-  <% if (theme.search.enable === true) { %>
-	<div class="search">
-	  <form name="searchform" id="searchform" class="u-search-form">
-	    <input type="text" id="searchinput" class="u-search-input" placeholder="Looking for something?" />
-	    <button type="submit" id="u-search-btn-submit" class="u-search-btn-submit">
-	      <span class="icon icon-search"></span>
-	    </button>
-	  </form>
-	</div>
-	<% } %>
 
-	<div class="social-wrapper">
-  	<% if (theme.social) { %>
-      <% theme.social.forEach(function(value) {
-           if (value.url && value.slug) { %>
-        <a href="<%= value.url %>" class="social <%= value.slug %>"
-          target="_blank" rel="external">
-          <span class="icon icon-<%= value.slug %>"></span>
-        </a>
-      <% } }); %>
+    <% if (theme.search.enable === true) { %>
+        <div class="search">
+            <form name="searchform" id="searchform" class="u-search-form">
+                <input type="text" id="searchinput" class="u-search-input" placeholder="Looking for something?"/>
+                <button type="submit" id="u-search-btn-submit" class="u-search-btn-submit">
+                    <span class="icon icon-search"></span>
+                </button>
+            </form>
+        </div>
     <% } %>
-  </div>
-  
-  <div>Theme <span class="codename">Typescript</span> designed by <a href="http://rakugaki.me/" target="_blank">Art Chen</a>.</div>
-  <div>&copy; <a href="/"><%= config.title %></a></div>
-  
+
+    <div class="social-wrapper">
+        <% if (theme.social) { %>
+            <% theme.social.forEach(function(value) {
+            if (value.url && value.slug) { %>
+                <a href="<%= value.url %>" class="social <%= value.slug %>"
+                   target="_blank" rel="external">
+                    <span class="icon icon-<%= value.slug %>"></span>
+                </a>
+            <% } }); %>
+        <% } %>
+    </div>
+
+    <div class="theme-by">Theme <span class="codename">Memory</span> designed by <a href="https://artifact.me/"
+                                                                                    target="_blank">Art Chen</a>.
+    </div>
+    <div>&copy; <a href="<%= url_for('/') %>"><%= config.title %></a></div>
+
 </footer>
 

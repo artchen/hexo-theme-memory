@@ -1,0 +1,114 @@
+@import "variables";
+
+#footer {
+  position: relative;
+  padding: 0 20px 30px 20px;
+  width: 100%;
+  max-width: $on-phone;
+  margin: 30px auto 0 auto;
+  font-size: 13px;
+  overflow: hidden;
+  text-align: center;
+  opacity: 0;
+  transform: translate3d(0px, -20px, 0px);
+  transition: all 0.4s ease;
+  z-index: 3;
+
+  &.loaded {
+    transform: translate3d(0px, 0px, 0px);
+    opacity: 1;
+  }
+  .codename {
+    color: $material-orange;
+  }
+  .social-wrapper {
+    padding-top: 20px;
+  }
+  .theme-by {
+    font-size: 12px;
+  }
+  a {
+    color: $grey-color;
+
+    &:hover {
+      background: fade($accent-color, 10%);
+      color: darken($accent-color, 3%);
+    }
+    &.social {
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      font-size: 16px;
+      margin: 0 5px;
+
+      &:hover {
+        background: transparent;
+        color: $accent-color;
+      }
+      &.github:hover {
+        color: $github-color;
+      }
+      &.google:hover {
+        color: $google-color;
+      }
+      &.twitter:hover {
+        color: $twitter-color;
+      }
+      &.weibo:hover {
+        color: $weibo-color;
+      }
+    }
+  }
+}
+
+.search {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 20px auto;
+  z-index: 2;
+
+  #searchform {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    #u-search-btn-submit {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 36px;
+      height: 36px;
+      background: transparent;
+      color: white;
+      border: 0;
+      text-align: center;
+
+      span {
+        line-height: 36px;
+      }
+    }
+  }
+  #searchinput {
+    width: 100%;
+    padding: 0 10px;
+    line-height: 36px;
+    height: 36px;
+    font-size: 12px;
+    font-family: $base-font-family;
+    border: none;
+    border-radius: 0 !important;
+    background: $black;
+    color: white;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    box-shadow: none;
+    transition: all 0.24s ease;
+
+    &:focus {
+      background: black;
+      border-color: black;
+    }
+  }
+}

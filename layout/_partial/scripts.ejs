@@ -1,43 +1,43 @@
 <% if (config.disqus_shortname){ %>
-<script>
-  var disqus_shortname = '<%= config.disqus_shortname %>';
-  <% if (page.permalink){ %>
-  var disqus_url = '<%= page.permalink %>';
-  <% } %>
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
+    <script>
+      var disqus_shortname = '<%= config.disqus_shortname %>';
+      <% if (page.permalink){ %>
+      var disqus_url = '<%= page.permalink %>';
+      <% } %>
+      (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
 <% } %>
 
 <% if (config.duoshuo_shortname){ %>
-<script>
-  var duoshuoQuery = {short_name:"<%= config.duoshuo_shortname %>"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script>
+  <script>
+    var duoshuoQuery = {short_name:"<%= config.duoshuo_shortname %>"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol === 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+              || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
 <% } %>
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="<%= url_for("/js/jquery.min.js")  %>"><\/script>')</script>
 
 <%- js('js/jquery.fitvids.js') %>
 <script>
-	var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google_api_key %>";
-	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.google_engine_id %>";
-	var ALGOLIA_API_KEY = "<%- theme.search.algolia_api_key %>";
-	var ALGOLIA_APP_ID = "<%- theme.search.algolia_app_id %>";
-	var ALGOLIA_INDEX_NAME = "<%- theme.search.algolia_index_name %>";
+  var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google_api_key %>";
+  var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.google_engine_id %>";
+  var ALGOLIA_API_KEY = "<%- theme.search.algolia_api_key %>";
+  var ALGOLIA_APP_ID = "<%- theme.search.algolia_app_id %>";
+  var ALGOLIA_INDEX_NAME = "<%- theme.search.algolia_index_name %>";
   var AZURE_SERVICE_NAME = "<%- theme.search.azure_service_name %>";
   var AZURE_INDEX_NAME = "<%- theme.search.azure_index_name %>";
   var AZURE_QUERY_KEY = "<%- theme.search.azure_query_key %>";
@@ -48,7 +48,7 @@
       searchService: SEARCH_SERVICE,
       apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
       engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID,
-      imagePath: "<%= url_for('/images/') %>"
+      imagePath: "/img/"
     };
   } else if (SEARCH_SERVICE === 'algolia') {
     universalSearchConfig = {
@@ -56,7 +56,7 @@
       apiKey: ALGOLIA_API_KEY,
       appId: ALGOLIA_APP_ID,
       indexName: ALGOLIA_INDEX_NAME,
-      imagePath: "<%= url_for('/images/') %>"
+      imagePath: "/img/"
     };
   } else if (SEARCH_SERVICE === 'azure') {
     universalSearchConfig = {
@@ -64,9 +64,16 @@
       serviceName: AZURE_SERVICE_NAME,
       indexName: AZURE_INDEX_NAME,
       apiKey: AZURE_QUERY_KEY,
-      imagePath: "<%= url_for('/images/') %>"
+      imagePath: "/img/"
     };
   }
 </script>
 <%- js('js/app.js') %>
 <%- js('js/search.js') %>
+
+<% if (config.addthis_pub_id) { %>
+  <script type="text/javascript"
+          src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<%= config.addthis_pub_id %>"
+          async="async"></script>
+<% } %>
+

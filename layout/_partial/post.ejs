@@ -1,33 +1,33 @@
 <article class="post <%= (post.title) ? "" : "no-title" %>">
 
-  <% if (post.title) { %>
-  <h2 class="title">
-    <a href="<%- url_for(post.path) %>">
-      <%= post.title %>
-    </a>
-  </h2>
-  <% } %>
-  <time>
-    <%= date(post.date, 'MMM D, YYYY') %>
-  </time>
-  <section class="content">
-	  <%- post.excerpt || post.content %>
-
-    <% if (post.excerpt) { %>
-	  <div class="readmore">
-      <a href="<%- url_for(post.path) %>">Read More</a>
-    </div>
+    <% if (post.title) { %>
+        <h2 class="title">
+            <a href="<%- url_for(post.path) %>">
+                <%= post.title %>
+            </a>
+        </h2>
     <% } %>
-    
-    <% if (post.tags && post.tags.length) { %>
-	  <div class="tags">
-      <%- list_tags(post.tags, {
-        show_count: false,
-        style: 'none',
-        separator: ''
-      }) %>
-	  </div>
-    <% } %>
+    <time>
+        <%= date(post.date, 'MMM D, YYYY') %>
+    </time>
+    <section class="content">
+        <%- post.excerpt || post.content %>
 
-  </section>
+        <% if (post.excerpt) { %>
+            <div class="readmore">
+                <a href="<%- url_for(post.path) %>">Read More</a>
+            </div>
+        <% } %>
+
+        <% if (post.tags && post.tags.length) { %>
+            <div class="tags">
+                <%- list_tags(post.tags, {
+                    show_count: false,
+                    style: 'none',
+                    separator: ''
+                }) %>
+            </div>
+        <% } %>
+
+    </section>
 </article>
