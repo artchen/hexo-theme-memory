@@ -16,9 +16,17 @@
         background: transparent;
         transition: all ease 0.24s;
 
+        @media (prefers-color-scheme: dark) {
+          color: $dark-mode-text-color;
+        }
         &:hover {
-          border-left-color: lighten($accent-color,10%);
-          background: lighten($background-color,2%);
+          border-left-color: lighten($brand-color, 10%);
+          background-color: lighten($background-color, 2%);
+
+          @media (prefers-color-scheme: dark) {
+            border-left-color: lighten($dark-mode-brand-color, 10%);
+            background-color: darken($dark-mode-light-background, 5%);
+          }
         }
       }
     }
@@ -33,7 +41,11 @@
       }
       .title {
         font-size: 14px;
-        color: $accent-color;
+        color: $brand-color;
+
+        @media (prefers-color-scheme: dark) {
+          color: $dark-mode-brand-color;
+        }
       }
     }
   }

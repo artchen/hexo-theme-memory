@@ -12,6 +12,10 @@
   position: relative;
   width: 0;
   height: 2px;
-  background-color: fade(lighten($accent-color, 2%), 100%);
+  background-color: rgba(lighten($brand-color, 2%), 100%);
   transition: all 0.5s ease;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba(lighten($dark-mode-brand-color, 2%), 100%);
+  }
 }

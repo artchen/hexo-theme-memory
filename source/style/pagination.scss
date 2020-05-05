@@ -14,12 +14,20 @@
   .prev {
     font-size: 13px;
     font-weight: normal;
-    color: lighten($black, 40%);
+    color: lighten($text-color, 40%);
     border-radius: 2px;
 
+    @media (prefers-color-scheme: dark) {
+      color: darken($dark-mode-text-color, 30%);
+    }
     &:hover {
-      color: white;
-      background: $black;
+      color: $white;
+      background-color: $text-color;
+
+      @media (prefers-color-scheme: dark) {
+        color: $dark-mode-text-color;
+        background-color: $dark-mode-dark-background;
+      }
     }
     span {
       line-height: 20px;

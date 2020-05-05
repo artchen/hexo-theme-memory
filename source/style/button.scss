@@ -2,17 +2,26 @@
 
 .dark-btn {
   display: inline-block;
-  background: rgba(0,0,0,0.3);
-  border: 1px solid black;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid $black;
   padding: 0 15px;
   font-size: 13px;
   font-family: $base-font-family;
   text-align: center;
   color: lighten(#8f8f8f, 20%);
 
+  @media (prefers-color-scheme: dark) {
+    color: $dark-mode-text-color;
+  }
+
   &:hover {
-    color: lighten(#8f8f8f, 40%);
+    color: darken($text-color, 10%);
     background-color: $brand-color;
+
+    @media (prefers-color-scheme: dark) {
+      color: darken($dark-mode-text-color, 60%);
+      background-color: $dark-mode-brand-color;
+    }
   }
   .icon {
     margin-right: 5px;

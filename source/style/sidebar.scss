@@ -7,8 +7,7 @@
   width: 280px;
   height: 100%;
   padding: 20px;
-  background: url("/img/sidebar-bg.png") repeat;
-  background-size: 102px 102px;
+  background-color: lighten($dark-mode-light-background, 5%);
   text-align: center;
   overflow: hidden;
   transform: translate3d(280px, 0, 0);
@@ -61,8 +60,12 @@
       font-size: 12px;
 
       &.active {
-        color: lighten(#8f8f8f, 40%);
+        color: darken($text-color, 10%);
         background-color: $brand-color;
+
+        @media (prefers-color-scheme: dark) {
+          background-color: $dark-mode-brand-color;
+        }
       }
       .icon {
         line-height: 30px;
@@ -121,20 +124,18 @@
   }
   .about-me {
     padding: 12px 5px 15px 5px;
-    background: rgba(0,0,0,0.1);
-    border: 1px solid lighten(black, 15%);
-    transition: background 0.24s, border-color 0.24s;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-color 0.24s, border-color 0.24s;
 
     &:hover {
-      background: rgba(0,0,0,0.2);
-      border-color: lighten(black, 10%);
+      background-color: rgba(0, 0, 0, 0.2);
     }
     .avatar {
       display: block;
       width: 96px;
       height: 96px;
       margin: 4px auto;
-      background: rgba(0,0,0,0.3);
+      background-color: rgba(0,0,0,0.3);
       border-radius: 50%;
       border: 1px solid black;
       padding: 3px;
@@ -153,26 +154,33 @@
 
       &:hover {
         background-color: $brand-color;
+
+        @media (prefers-color-scheme: dark) {
+          background-color: $dark-mode-brand-color;
+        }
       }
       .icon {
         margin-right: 0;
       }
     }
     .info {
-      color: lighten(#8f8f8f, 10%);
+      color: lighten($text-color, 40%);
       margin-top: 10px;
       line-height: 140%;
       padding: 0 15px;
       font-size: 12px;
+
+      @media (prefers-color-scheme: dark) {
+        color: darken($dark-mode-text-color, 25%);
+      }
     }
   }
 }
 
 .site-toc {
   position: relative;
-  padding: 12px 10px 15px 10px;
-  background: rgba(0,0,0,0.1);
-  border: 1px solid lighten(black, 15%);
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.1);
   max-height: 450px;
   overflow: auto;
   opacity: 0;
@@ -190,11 +198,15 @@
     li {
 
       a {
-        color: darken(white, 10%);
-        font-size: 15px;
+        color: lighten($text-color, 100%);
+        font-size: 14px;
 
         &:hover {
           color: $brand-color;
+
+          @media (prefers-color-scheme: dark) {
+            color: $dark-mode-brand-color;
+          }
         }
       }
       ol {

@@ -43,13 +43,23 @@ $behance-color: #1769FF;
 $tixora-color: #33475A;
 
 // Colors
-$black: #414141;
+$black: #000000;
 $white: #ffffff;
-$text-color: $black;
+$text-color: #414141;
 $background-color: #EBECEE;
-$brand-color: $material-teal;
-$accent-color: $material-orange;
+$brand-color: $material-orange;
+$accent-color: $material-teal;
 $grey-color: #828282;
+
+// Dark mode
+$dark-mode-brand-color: $material-teal;
+$dark-mode-accent-color: $material-orange;
+$dark-mode-background: darken(#15202b, 5%);
+$dark-mode-light-background: lighten($dark-mode-background, 5%);
+$dark-mode-dark-background: darken($dark-mode-background, 5%);
+$dark-mode-text-color: lighten($dark-mode-background, 60%);
+$dark-mode-light-text-color: lighten($dark-mode-background, 80%);
+$dark-mode-dark-text-color: lighten($dark-mode-background, 40%);
 
 // Responsive limits
 $modal-threshold: 680px;

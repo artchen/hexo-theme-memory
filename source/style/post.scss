@@ -37,6 +37,10 @@
       font-size: 13px;
       font-weight: normal;
       color: lighten($grey-color, 20%);
+
+      @media (prefers-color-scheme: dark) {
+        color: darken($dark-mode-text-color, 30%);
+      }
     }
   }
 
@@ -44,8 +48,12 @@
     position: relative;
     padding: 30px;
     margin: 30px 0;
-    background: white;
+    background-color: $white;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $dark-mode-light-background;
+    }
 
     @media (max-width: $on-phone) {
       padding: 20px;
@@ -58,16 +66,21 @@
     position: relative;
     margin-bottom: 30px;
     padding: 40px 0;
-    background: white;
+    background-color: $white;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $dark-mode-light-background;
+    }
 
     &.no-title {
       padding: 20px 0;
 
-      >time {
+      > time {
         text-align: left;
         padding-left: 30px;
         margin: 0;
+
         @media (max-width: $on-phone) {
           padding-left: 20px;
         }
@@ -78,82 +91,7 @@
     &#archive-page {
       margin-bottom: 0;
     }
-    &.author-profile {
-      position: relative;
-      padding: 30px 20px;
-      height: auto;
-      text-align: center;
-      margin-bottom: 30px;
-      transition: all 0.24s ease;
-
-      @media (max-width: $on-phone) {
-        padding: 20px;
-      }
-      .author-title,
-      .author-bio {
-        position: relative;
-        font-size: 16px;
-        z-index: 1;
-
-        span,
-        a {
-          display: inline-block;
-          background: rgba(0, 0, 0, 0.5);
-          color: white;
-          padding: 5px 15px 7px 15px;
-          border-radius: 5px;
-          font-weight: bolder;
-          letter-spacing: 1px;
-        }
-        a:hover {
-          color: $accent-color;
-          background: rgba(0, 0, 0, 0.75);
-        }
-      }
-      .author-title {
-
-        a {
-          font-size: 1.25em;
-
-          @media (max-width: $on-phone) {
-            font-size: 1.25em;
-            padding: 7px 20px;
-          }
-        }
-      }
-      .author-avatar {
-        position: relative;
-        margin: 0 auto 20px auto;
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        overflow: hidden;
-        z-index: 1;
-
-        img {
-          display: block;
-          width: 100%;
-          height: 100%;
-        }
-      }
-      .author-cover {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: $black;
-        z-index: 0;
-
-        .img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          background-size: cover;
-        }
-      }
-    }
-    >.title {
+    > .title {
       display: block;
       text-align: center;
       font-size: 1.25em;
@@ -166,19 +104,31 @@
         display: inline;
         line-height: 1.25;
         font-weight: normal;
-        color: lighten($black, 2%);
+        color: lighten($text-color, 2%);
+
+        @media (prefers-color-scheme: dark) {
+          color: lighten($dark-mode-text-color, 5%);
+        }
 
         &:hover {
-          color: lighten($material-green, 3%);
+          color: lighten($accent-color, 3%);
+
+          @media (prefers-color-scheme: dark) {
+            color: lighten($dark-mode-accent-color, 5%);
+          }
         }
       }
     }
-    >time {
+    > time {
       display: block;
       text-align: center;
       color: lighten($grey-color, 20%);
       font-size: 0.75em;
       margin-bottom: 30px;
+
+      @media (prefers-color-scheme: dark) {
+        color: darken($dark-mode-text-color, 30%);
+      }
     }
     .image {
       position: relative;

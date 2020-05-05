@@ -14,12 +14,19 @@
   transition: all 0.4s ease;
   z-index: 3;
 
+  @media (prefers-color-scheme: dark) {
+    color: darken($dark-mode-text-color, 20%);
+  }
   &.loaded {
     transform: translate3d(0px, 0px, 0px);
     opacity: 1;
   }
   .codename {
-    color: $material-orange;
+    color: darken($brand-color, 10%);
+
+    @media (prefers-color-scheme: dark) {
+      color: darken($dark-mode-brand-color, 5%);
+    }
   }
   .social-wrapper {
     padding-top: 20px;
@@ -30,9 +37,17 @@
   a {
     color: $grey-color;
 
+    @media (prefers-color-scheme: dark) {
+      color: $dark-mode-text-color;
+    }
     &:hover {
-      background: fade($accent-color, 10%);
-      color: darken($accent-color, 3%);
+      color: darken($brand-color, 3%);
+      background-color: rgba($brand-color, 0.1);
+
+      @media (prefers-color-scheme: dark) {
+        color: darken($dark-mode-brand-color, 3%);
+        background-color: rgba($dark-mode-brand-color, 0.1);
+      }
     }
     &.social {
       position: relative;
@@ -99,16 +114,20 @@
     font-family: $base-font-family;
     border: none;
     border-radius: 0 !important;
-    background: $black;
-    color: white;
+    background: $text-color;
+    color: $white;
     box-sizing: border-box;
     -webkit-appearance: none;
     box-shadow: none;
     transition: all 0.24s ease;
 
+    @media (prefers-color-scheme: dark) {
+      color: $dark-mode-text-color;
+      background: $dark-mode-light-background;
+    }
     &:focus {
-      background: black;
-      border-color: black;
+      background: $dark-mode-dark-background;
+      border-color: $black;
     }
   }
 }

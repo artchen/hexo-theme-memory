@@ -1,11 +1,14 @@
 @import "variables";
 
 .content {
-  color: lighten($black, 2%);
+  color: lighten($text-color, 2%);
   font-size: 14px;
   line-height: 1.75em;
   padding: 0 30px;
 
+  @media (prefers-color-scheme: dark) {
+    color: $dark-mode-text-color;
+  }
   @media (max-width: $on-phone) {
     padding: 0 20px;
   }
@@ -13,17 +16,25 @@
   #pixiv-artist-count {
     color: $brand-color;
     font-weight: bolder;
+
+    @media (prefers-color-scheme: dark) {
+      color: $dark-mode-brand-color;
+    }
   }
   img {
     position: relative;
     display: block;
     width: 114%;
     margin: 0 -7%;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
     padding: 5px;
-    background: white;
+    background-color: $white;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
     transition: all 0.24s ease;
 
+    @media (prefers-color-scheme: dark) {
+      background-color: lighten($dark-mode-light-background, 5%);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
     @media (max-width: $on-phone)  {
       width: 100%;
       margin: 0;
@@ -33,6 +44,10 @@
   hr {
     border: 0;
     border-bottom: 1px solid #ddd;
+
+    @media (prefers-color-scheme: dark) {
+      border-bottom-color: lighten($dark-mode-light-background, 8%);
+    }
   }
   p.small-img,
   div.small-img {
@@ -53,15 +68,27 @@
     padding-left: 30px;
   }
   a {
-    color: darken($accent-color, 2%);
+    color: darken($brand-color, 2%);
 
+    @media (prefers-color-scheme: dark) {
+      color: darken($dark-mode-brand-color, 2%);
+    }
     &:hover {
-      color: darken($accent-color, 3%);
-      background: fade($accent-color, 10%);
+      color: darken($brand-color, 4%);
+      background: rgba($brand-color, 0.1);
+
+      @media (prefers-color-scheme: dark) {
+        color: darken($dark-mode-brand-color, 4%);
+        background: rgba($dark-mode-brand-color, 0.1);
+      }
     }
     &:active {
-      background: fade($accent-color, 20%);
       color: $white;
+      background: rgba($brand-color, 0.6);
+
+      @media (prefers-color-scheme: dark) {
+        background: rgba($dark-mode-brand-color, 0.6);
+      }
     }
   }
   h1, h2, h3, h4, h5, h6 {
@@ -107,18 +134,16 @@
     box-sizing: border-box;
     font-family: $code-font-family;
     width: 100%;
-    font-size: 12px;
     margin: 20px 0;
     padding: 10px 15px;
-    background: lighten($background-color,5%);
     white-space: pre;
     overflow: auto;
 
     code {
-      color: $black;
+      color: $text-color;
       margin: 0;
       font-size: 1em;
-      background: transparent;
+      background-color: transparent;
       border: 0;
       white-space: inherit;
     }
@@ -134,16 +159,24 @@
     border-radius: 2px;
     white-space: nowrap;
     font-size: 1em;
-    background: lighten($background-color, 5%);
+    background-color: lighten($background-color, 5%);
+
+    @media (prefers-color-scheme: dark) {
+      color: darken($dark-mode-brand-color, 2%);
+      background-color: darken($dark-mode-background, 5%);
+    }
   }
   .highlight {
     width: 100%;
     margin: 20px 0;
-    background: lighten($background-color, 5%);
+    background-color: lighten($background-color, 5%);
     overflow: auto;
 
+    @media (prefers-color-scheme: dark) {
+      background-color: darken($dark-mode-background, 5%);
+    }
     figcaption {
-      background: white;
+      background-color: transparent;
       padding-bottom: 15px;
     }
     pre {
@@ -157,7 +190,7 @@
     }
     .line {
       &.marked {
-        background: #F6F6F8;
+        background-color: transparent;
       }
     }
   }
@@ -166,18 +199,27 @@
 
     a {
       position: relative;
-      padding: 4px 10px 4px 20px;
+      padding: 4px 10px 4px 18px;
       margin-right: 5px;
       font-size: 12px;
-      background: $background-color;
       border-radius: 2px;
       vertical-align: middle;
       line-height: 1.75em;
-      color: $black;
+      color: $text-color;
+      background-color: $background-color;
+
+      @media (prefers-color-scheme: dark) {
+        color: $dark-mode-text-color;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
 
       &:hover {
-        background: $black;
-        color: white;
+        background-color: $text-color;
+        color: $dark-mode-light-text-color;
+
+        @media (prefers-color-scheme: dark) {
+          background-color: rgba(0, 0, 0, 0.4);
+        }
       }
       &::before {
         position: absolute;
@@ -204,7 +246,7 @@
     h3 {
       font-size: 1.3em;
     }
-    h4{
+    h4 {
       font-size: 1.2em;
     }
     h5 {
