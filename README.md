@@ -6,17 +6,25 @@ This theme is also available on:
 
 * Ghost version: [ghost-theme-memory](https://github.com/artchen/ghost-theme-memory)
 
-## Dependencies
+## Installation
 
-Install these Hexo plugins to unlock the full potential of this theme:
+Git Clone:
+```bash
+git clone https://github.com/artchen/hexo-theme-memory.git themes/hexo-theme-memory
+```
 
-* hexo-generator-archive
-* hexo-generator-tag
-* hexo-renderer-ejs
-* hexo-renderer-scss
-* hexo-renderer-marked
-* hexo-pagination
-* hexo-toc
+Install Dependencies in Hexo site root directory:
+```bash
+npm i github:artchen/hexo-theme-memory
+```
+<details>
+  <summary>If installing dependencies fails, try</summary>
+
+  ```bash
+  npm i hexo-generator-archive hexo-generator-tag hexo-renderer-ejs hexo-renderer-dartsass hexo-renderer-marked hexo-pagination hexo-toc
+  ```
+
+</details>
 
 ## Customization
 
