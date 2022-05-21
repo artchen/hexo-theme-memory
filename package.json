@@ -1,4 +1,5 @@
 {
+  "name": "hexo-theme-memory",
   "description": "Memory is a minimal theme for [Hexo](http://hexo.io).",
   "dependencies": {
     "hexo-generator-archive": "^1.0.0",
