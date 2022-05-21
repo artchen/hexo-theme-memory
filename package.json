@@ -1,6 +1,7 @@
 {
   "name": "hexo-theme-memory",
   "description": "Memory is a minimal theme for [Hexo](http://hexo.io).",
+  "version": "2.1.0",
   "dependencies": {
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-tag": "^1.0.0",
